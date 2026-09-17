@@ -31,5 +31,6 @@ public:
     void spinJackpot();
     void spin(int i);
     void printLoot() const;
-};
 
+    const std::map<std::string, int>& getLoot() const;
+};
