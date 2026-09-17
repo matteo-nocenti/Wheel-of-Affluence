@@ -11,12 +11,20 @@ std::uniform_int_distribution<int> distrib(0, 10000);
 
 using prize = std::variant<std::string, int>;
 
+struct data {
+	int quantity{};
+	int probability{};
+};
+
+
 class Wheel {
 private:
-	int stage{ 1 };
-	std::unordered_map<int, std::unordered_map<std::string, std::vector<int, int>>> database;
-	std::map<std::string, int> totalGain;
+	int _stage{ 1 };
+	std::unordered_map<std::string, data> _roll;
+	std::unordered_map<int, std::unordered_map<std::string, data>> _jackpot;
+	std::map<std::string, int> _totalGain;
 public:
+	void load();
 	void stageUpdate();
 	void spinJackpot();
 	void spin();
